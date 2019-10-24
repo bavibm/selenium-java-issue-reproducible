@@ -23,13 +23,24 @@ Java Extension Pack installed and enabled
 ```terminal
 git clone https://github.com/bavibm/selenium-java-issue-reproducible
 cd selenium-java-issue-reproducible/selenium-issue
-mvn clean install
 ```
+* `mvn clean package` or `mvn clean install`
 * See error messages...
-* uncomment the requires in module-info.java and comment the other ones
 ```
-mvn clean install
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project selenium-issue: Compilation failure: Compilation failure: 
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[4,33] module not found: org.openqa.selenium.chrome
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[5,33] module not found: org.openqa.selenium.core
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[6,33] module not found: org.openqa.selenium.firefox
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[7,33] module not found: org.openqa.selenium.ie
 ```
+* uncomment the automodules requires in `module-info.java` and comment the other ones
+* `mvn clean package` or `mvn clean install`
 * See issues still...
-* Open project in Eclipse and VS Code (with Java Extensions enabled)
-* See that it is giving module cannot be found errors on
+```
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[9,22] module not found: selenium.api
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[10,29] module not found: selenium.chrome.driver
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[11,30] module not found: selenium.firefox.driver
+[ERROR] /tmp/selenium-java-issue-reproducible/selenium-issue/src/main/java/module-info.java:[12,25] module not found: selenium.ie.driver
+```
+* Open project in Eclipse see `cannot be resolved to a module` errors on the second set of requires but not on the first
+* Open project in VS Code see `cannot be resolved to a module` errors in either case and red squigglies all around.
