@@ -1,5 +1,7 @@
 Reproducible for issue: [https://github.com/SeleniumHQ/selenium/issues/7713](https://github.com/SeleniumHQ/selenium/issues/7713)
 
+This has been attempted in both Fedora 30 (Linux), and Windows 10 but the results are the same.
+
 #### Steps to reproduce:
 * Open terminal and issue these commands:
 ```terminal
